@@ -4,8 +4,6 @@
 
 Visit the [Argilla documentation](https://docs.argilla.io) to learn about its features and check out the [Deep Dive Guides](https://docs.argilla.io/en/latest/guides/guides.html) and [Tutorials](https://docs.argilla.io/en/latest/tutorials/tutorials.html).
 
-If you want to play with the Argilla UI without installing anything, check this [live demo](https://huggingface.co/spaces/argilla/live-demo). The demo is powered by Hugging Face Docker Spaces, the same technology you'll learn in this guide. To login into the UI use: username: `huggingface`, password: `1234`.
-
 In the next sections, you'll learn to deploy your own Argilla app and use it for data labelling workflows right from the Hub. 
 
 ## Your first Argilla Docker Space
@@ -22,6 +20,10 @@ The easiest way to get started is by [duplicating the Argilla Docker Template](h
 <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hub/spaces-argilla-duplicate-space.png"/>
 </div>
 
+<Tip>
+Although you can duplicate other existing Argilla Spaces, we recommend starting from the official [Argilla Docker Template](https://huggingface.co/spaces/argilla/template-space-docker?duplicate=true).
+</Tip>
+
 Note: You'll see a mention to the need of setting up environment variables (`API_KEY`) by adding a secret to your Space but will see this in a second.
 
 ### Setting up secret environment variables
@@ -32,11 +34,24 @@ The Space template provides a way to set up two optional settings:
 
 - `PASSWORD`: This setting allows you to set up a custom password for login into the app. The default password is `1234` and the default user is `argilla`. By setting up a custom password you can use your own password to login into the app. The value of the `PASSWORD` secret must be a hashed password, you can generate one following [this guide](https://docs.argilla.io/en/latest/getting_started/installation/user_management.html#override-default-password).
 
-In order to set up these secrets, you need to go to the Settings tab on your newly created Space and make sure to store the values somewhere safe on your local machine for later use. For testing purposes, you can completely skip this step, or just set one of the two variables. If you do this, the default values from the [basic Argilla setup](https://docs.argilla.io/en/latest/getting_started/installation/installation.html) will be kept.
+In order to set up these secrets, you need to go to the Settings tab on your newly created Space and make sure to store the values somewhere safe on your local machine for later use. 
+
+<Tip>
+For testing purposes, you can completely skip this step, or just set one of the two variables. If you do this, the default values from the [basic Argilla setup](https://docs.argilla.io/en/latest/getting_started/installation/installation.html) will be kept.
+</Tip>
+
 
 ### Create your first dataset
 
-Once your Argilla Space is running, you can start interacting with the it using the Direct URL you'll find in the "Embed this Space" option (top right). Let's say it's https://dvilasuero-argilla-setfit.hf.space. This URL will give you access to a full-screen, stable Argilla app, but will also serve as an endpoint for interacting with Argilla Python library. Let's see how to create our first dataset for labelling. You also can access the app directly using the main URL of the Space, for example: https://huggingface.co/spaces/dvilasuero/argilla-setfit.
+Once your Argilla Space is running, you can start interacting with the it using the Direct URL you'll find in the "Embed this Space" option (top right). Let's say it's https://dvilasuero-argilla-setfit.hf.space. This URL will give you access to a full-screen, stable Argilla app, but will also serve as an endpoint for interacting with Argilla Python library. 
+
+<Tip>
+You'll see the login screen where you need to use either the default username and password `argilla` / `1234`, or `argilla` and the password you've included in the secret env variable `PASSWORD`. If you get a `500` error when introducing the credentials, make sure you have correctly hashed the password before adding it to the secret environment variable.
+</Tip>
+
+After login, you'll see an empty workspace with no datasets. This can be done using the Argilla Python client from a Python IDE such as Colab, Jupyter, or VS Code.
+
+Let's see how to create our first dataset for labelling. From this point, you can follow the tutorial using this end-to-end tutorial [Colab notebook](https://colab.research.google.com/drive/1GeBBuRw8CIZ6SYql5Vdx4Q2Vv74eFa1I?usp=sharing).
 
 <div class="flex justify-center">
 <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hub/spaces-argilla-embed-space.png"/>
